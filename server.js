@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 
 const users = require("./routes/api/users");
-
+const plaid = require("./routes/api/plaid");
 const app = express();
 
 // Bodyparser middleware
@@ -21,8 +21,8 @@ const db = require("./config/keys").mongoURI;
 // Connect to MongoDB
 mongoose
   .connect(
-    "dbUser:Eskie1994@plaid-emilv.mongodb.net/test?retryWrites=true&w=majority",
-    { useNewUrlParser: true }
+    "mongodb+srv://diaaanek:eskie1994@testing-lyckw.mongodb.net/test?retryWrites=true&w=majority",
+    { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => console.log("MongoDB successfully connected"))
   .catch(err => console.log(err));
@@ -35,6 +35,7 @@ require("./config/passport")(passport);
 
 // Routes
 app.use("/api/users", users);
+app.use("/api/plaid", plaid);
 
 const port = process.env.PORT || 5000;
 

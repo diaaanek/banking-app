@@ -4,4 +4,5 @@ package-lock.json
 keys.js
 passport.js 
 
-/congfig
+/config
+/routes
